@@ -10,10 +10,9 @@
   "scripts": {
     "test": "ava -v"
   },
-  "repository": "mrmrs/random-display-p3-color",
+  "repository": "mrmrs/random-lch-color",
   "keywords": [
-    "p3",
-    "display-p3",
+    "lch",
     "color",
     "random",
     "generate"
