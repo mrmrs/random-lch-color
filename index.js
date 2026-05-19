@@ -14,7 +14,7 @@ module.exports = function randomLCHColor(
   validateRange('lightness', minL, maxL);
   validateRange('chroma', minC, maxC);
   validateRange('hue', minH, maxH);
-  if (includeAlpha) validateRange('alpha', alphaLow, alphaHigh);
+  if (includeAlpha) validateAlphaRange(alphaLow, alphaHigh);
 
   const lightness = pickAtPrecision(minL, maxL);
   const chroma = pickAtPrecision(minC, maxC);
@@ -72,5 +72,13 @@ function validateRange(channel, min, max) {
   }
   if (min > max) {
     throw new RangeError(`${channel} minimum must be less than or equal to maximum`);
+  }
+}
+
+function validateAlphaRange(min, max) {
+  validateRange('alpha', min, max);
+
+  if (min < 0 || max > 1) {
+    throw new RangeError('alpha range must be between 0 and 1');
   }
 }
